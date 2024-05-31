@@ -1,92 +1,138 @@
 {
-  "resources": {
-    "includes": [
-      {
-        "pattern": "\\QMETA-INF/services/java.lang.System$LoggerFinder\\E"
-      },
-      {
-        "pattern": "\\QMETA-INF/services/javax.xml.parsers.SAXParserFactory\\E"
-      },
-      {
-        "pattern": "\\QMETA-INF/services/org.slf4j.spi.SLF4JServiceProvider\\E"
-      },
-      {
-        "pattern": "\\QMETA-INF/services/ucar.nc2.iosp.IOServiceProvider\\E"
-      },
-      {
-        "pattern": "\\QMETA-INF/services/ucar.unidata.io.spi.RandomAccessFileProvider\\E"
-      },
-      {
-        "pattern": "\\Qorg/slf4j/impl/StaticLoggerBinder.class\\E"
-      },
-      {
-        "pattern": "\\Qresources/grib1/ncep/ncepTableA.xml\\E"
-      },
-      {
-        "pattern": "\\Qresources/grib2/ncep/v23.0.0/Table4.2.0.0.xml\\E"
-      },
-      {
-        "pattern": "\\Qresources/grib2/ncep/v23.0.0/Table4.2.0.1.xml\\E"
-      },
-      {
-        "pattern": "\\Qresources/grib2/ncep/v23.0.0/Table4.2.0.15.xml\\E"
-      },
-      {
-        "pattern": "\\Qresources/grib2/ncep/v23.0.0/Table4.2.0.16.xml\\E"
-      },
-      {
-        "pattern": "\\Qresources/grib2/ncep/v23.0.0/Table4.2.0.17.xml\\E"
-      },
-      {
-        "pattern": "\\Qresources/grib2/ncep/v23.0.0/Table4.2.0.19.xml\\E"
-      },
-      {
-        "pattern": "\\Qresources/grib2/ncep/v23.0.0/Table4.2.0.2.xml\\E"
-      },
-      {
-        "pattern": "\\Qresources/grib2/ncep/v23.0.0/Table4.2.0.20.xml\\E"
-      },
-      {
-        "pattern": "\\Qresources/grib2/ncep/v23.0.0/Table4.2.0.3.xml\\E"
-      },
-      {
-        "pattern": "\\Qresources/grib2/ncep/v23.0.0/Table4.2.0.4.xml\\E"
-      },
-      {
-        "pattern": "\\Qresources/grib2/ncep/v23.0.0/Table4.2.0.5.xml\\E"
-      },
-      {
-        "pattern": "\\Qresources/grib2/ncep/v23.0.0/Table4.2.0.6.xml\\E"
-      },
-      {
-        "pattern": "\\Qresources/grib2/ncep/v23.0.0/Table4.2.0.7.xml\\E"
-      },
-      {
-        "pattern": "\\Qresources/grib2/ncep/v23.0.0/Table4.2.1.0.xml\\E"
-      },
-      {
-        "pattern": "\\Qresources/grib2/ncep/v23.0.0/Table4.2.10.2.xml\\E"
-      },
-      {
-        "pattern": "\\Qresources/grib2/ncep/v23.0.0/Table4.2.2.0.xml\\E"
-      },
-      {
-        "pattern": "\\Qresources/grib2/ncep/v23.0.0/Table4.2.3.192.xml\\E"
-      },
-      {
-        "pattern": "\\Qresources/grib2/standardTableMap.txt\\E"
-      },
-      {
-        "pattern": "\\Qresources/grib2/wmo/GRIB2_22_0_0_CodeFlag_exp_en.xml\\E"
-      },
-      {
-        "pattern": "\\Qresources/wmo/Common_C11_20181107_en.xml\\E"
-      },
-      {
-        "pattern": "\\Qresources/wmo/Common_C12_20181107_en.xml\\E"
-      }
+    "resources": {
+        "includes": [
+            {
+                "pattern": "\\QMETA-INF/services/java.lang.System$LoggerFinder\\E"
+            },
+            {
+                "pattern": "\\QMETA-INF/services/java.nio.channels.spi.SelectorProvider\\E"
+            },
+            {
+                "pattern": "\\QMETA-INF/services/javax.xml.parsers.SAXParserFactory\\E"
+            },
+            {
+                "pattern": "\\QMETA-INF/services/org.junit.platform.engine.TestEngine\\E"
+            },
+            {
+                "pattern": "\\QMETA-INF/services/org.junit.platform.launcher.LauncherDiscoveryListener\\E"
+            },
+            {
+                "pattern": "\\QMETA-INF/services/org.junit.platform.launcher.LauncherSessionListener\\E"
+            },
+            {
+                "pattern": "\\QMETA-INF/services/org.junit.platform.launcher.PostDiscoveryFilter\\E"
+            },
+            {
+                "pattern": "\\QMETA-INF/services/org.junit.platform.launcher.TestExecutionListener\\E"
+            },
+            {
+                "pattern": "\\QMETA-INF/services/org.slf4j.spi.SLF4JServiceProvider\\E"
+            },
+            {
+                "pattern": "\\QMETA-INF/services/thredds.inventory.MControllerProvider\\E"
+            },
+            {
+                "pattern": "\\QMETA-INF/services/thredds.inventory.MFileProvider\\E"
+            },
+            {
+                "pattern": "\\QMETA-INF/services/ucar.nc2.iosp.IOServiceProvider\\E"
+            },
+            {
+                "pattern": "\\QMETA-INF/services/ucar.unidata.io.spi.RandomAccessFileProvider\\E"
+            },
+            {
+                "pattern": "\\Qjunit-platform.properties\\E"
+            },
+            {
+                "pattern": "\\Qorg/joda/time/tz/data/America/New_York\\E"
+            },
+            {
+                "pattern": "\\Qorg/joda/time/tz/data/ZoneInfoMap\\E"
+            },
+            {
+                "pattern": "\\Qorg/slf4j/impl/StaticLoggerBinder.class\\E"
+            },
+            {
+                "pattern": "\\Qresources/bufrTables/local/tablelookup.csv\\E"
+            },
+            {
+                "pattern": "\\Qresources/bufrTables/wmo/BUFRCREX_32_0_0_CodeFlag_en.xml\\E"
+            },
+            {
+                "pattern": "\\Qresources/bufrTables/wmo/BUFRCREX_32_0_0_TableB_en.xml\\E"
+            },
+            {
+                "pattern": "\\Qresources/bufrTables/wmo/BUFR_32_0_0_TableA_en.xml\\E"
+            },
+            {
+                "pattern": "\\Qresources/bufrTables/wmo/BUFR_32_0_0_TableD_en.xml\\E"
+            },
+            {
+                "pattern": "\\Qresources/grib1/dss/WMO_GRIB1.xml\\E"
+            },
+            {
+                "pattern": "\\Qresources/grib1/dss/lookupTables.txt\\E"
+            },
+            {
+                "pattern": "\\Qresources/grib1/ecmwf/lookupTables.txt\\E"
+            },
+            {
+                "pattern": "\\Qresources/grib1/ecmwfEcCodes/lookupTables.txt\\E"
+            },
+            {
+                "pattern": "\\Qresources/grib1/lookupTables.txt\\E"
+            },
+            {
+                "pattern": "\\Qresources/grib1/ncep/ncepGrib1-2.xml\\E"
+            },
+            {
+                "pattern": "\\Qresources/grib1/ncep/ncepTableA.xml\\E"
+            },
+            {
+                "pattern": "\\Qresources/grib1/ncl/lookupTables.txt\\E"
+            },
+            {
+                "pattern": "\\Qresources/grib1/wmoTable3.xml\\E"
+            },
+            {
+                "pattern": "\\Qresources/grib1/wrf/lookupTables.txt\\E"
+            },
+            {
+                "pattern": "\\Qresources/grib2/ecmwf/localConcepts/ecmf/cfName.def\\E"
+            },
+            {
+                "pattern": "\\Qresources/grib2/ecmwf/localConcepts/ecmf/cfVarName.def\\E"
+            },
+            {
+                "pattern": "\\Qresources/grib2/ecmwf/localConcepts/ecmf/name.def\\E"
+            },
+            {
+                "pattern": "\\Qresources/grib2/ecmwf/localConcepts/ecmf/paramId.def\\E"
+            },
+            {
+                "pattern": "\\Qresources/grib2/ecmwf/localConcepts/ecmf/shortName.def\\E"
+            },
+            {
+                "pattern": "\\Qresources/grib2/ecmwf/localConcepts/ecmf/units.def\\E"
+            },
+            {
+                "pattern": "\\Qresources/grib2/standardTableMap.txt\\E"
+            },
+            {
+                "pattern": "\\Qresources/grib2/wmo/GRIB2_22_0_0_CodeFlag_exp_en.xml\\E"
+            },
+            {
+                "pattern": "\\Qresources/wmo/Common_C11_20181107_en.xml\\E"
+            },
+            {
+                "pattern": "\\Qresources/wmo/Common_C12_20181107_en.xml\\E"
+            },
+            {
+                "pattern": "\\Qresources/wmo/Common_C13_20181107_en.xml\\E"
+            }
+        ]
+    },
+    "bundles": [
+        
     ]
-  },
-  "bundles": [
-  ]
 }

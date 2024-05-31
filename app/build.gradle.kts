@@ -20,9 +20,10 @@ dependencies {
 
     // Additional file type bindings for netcdf
     implementation(libs.netcdf)
-    runtimeOnly(libs.grib)
-    runtimeOnly(libs.bufr)
-    runtimeOnly(libs.opendap)
+    implementation(libs.grib)
+    implementation(libs.bufr)
+    implementation(libs.opendap)
+    implementation(libs.zarr)
 
     implementation(libs.guava)
 
@@ -31,7 +32,7 @@ dependencies {
 }
 
 application {
-    mainClass = "org.example.Netcdf"
+    mainClass = "com.stellarsunset.netcdf.cli.Netcdf"
 }
 
 tasks.named<Test>("test") {
