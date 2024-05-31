@@ -41,10 +41,14 @@ tasks.named<Test>("test") {
 graalvmNative {
     binaries {
         all {
-            resources.autodetect()
+            imageName = "netcdf"
+
             javaLauncher = javaToolchains.launcherFor {
                 languageVersion = JavaLanguageVersion.of(21)
             }
+
+            resources.autodetect()
+            configurationFileDirectories.from(file("src/config"))
         }
     }
 }

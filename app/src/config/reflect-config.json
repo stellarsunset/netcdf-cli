@@ -1,0 +1,305 @@
+[
+  {
+    "name": "[Ljava.lang.String;"
+  },
+  {
+    "name": "[Lorg.jdom2.Content;"
+  },
+  {
+    "name": "com.google.protobuf.ExtensionRegistry",
+    "methods": [
+      {
+        "name": "getEmptyRegistry",
+        "parameterTypes": [
+
+        ]
+      }
+    ]
+  },
+  {
+    "name": "com.sun.org.apache.xerces.internal.jaxp.SAXParserFactoryImpl",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+
+        ]
+      }
+    ]
+  },
+  {
+    "name": "groovy.lang.Closure"
+  },
+  {
+    "name": "libcore.io.Memory"
+  },
+  {
+    "name": "org.example.Netcdf",
+    "queryAllDeclaredMethods": true,
+    "allDeclaredFields": true
+  },
+  {
+    "name": "org.example.info.Info",
+    "queryAllDeclaredMethods": true,
+    "allDeclaredFields": true
+  },
+  {
+    "name": "org.example.json.Json",
+    "queryAllDeclaredMethods": true,
+    "allDeclaredFields": true
+  },
+  {
+    "name": "org.robolectric.Robolectric"
+  },
+  {
+    "name": "picocli.CommandLine$HelpCommand",
+    "queryAllDeclaredMethods": true,
+    "allDeclaredFields": true
+  },
+  {
+    "name": "sun.misc.Unsafe",
+    "allDeclaredFields": true,
+    "methods": [
+      {
+        "name": "arrayBaseOffset",
+        "parameterTypes": [
+
+        ]
+      },
+      {
+        "name": "arrayIndexScale",
+        "parameterTypes": [
+
+        ]
+      },
+      {
+        "name": "copyMemory",
+        "parameterTypes": [
+          "long",
+          "long",
+          "long"
+        ]
+      },
+      {
+        "name": "copyMemory",
+        "parameterTypes": [
+          "long",
+          "long",
+          "long"
+        ]
+      },
+      {
+        "name": "getBoolean",
+        "parameterTypes": [
+          "long"
+        ]
+      },
+      {
+        "name": "getByte",
+        "parameterTypes": [
+          "long"
+        ]
+      },
+      {
+        "name": "getByte",
+        "parameterTypes": [
+          "long"
+        ]
+      },
+      {
+        "name": "getDouble",
+        "parameterTypes": [
+          "long"
+        ]
+      },
+      {
+        "name": "getFloat",
+        "parameterTypes": [
+          "long"
+        ]
+      },
+      {
+        "name": "getInt",
+        "parameterTypes": [
+          "long"
+        ]
+      },
+      {
+        "name": "getInt",
+        "parameterTypes": [
+          "long"
+        ]
+      },
+      {
+        "name": "getLong",
+        "parameterTypes": [
+          "long"
+        ]
+      },
+      {
+        "name": "getLong",
+        "parameterTypes": [
+          "long"
+        ]
+      },
+      {
+        "name": "getObject",
+        "parameterTypes": [
+          "long"
+        ]
+      },
+      {
+        "name": "objectFieldOffset",
+        "parameterTypes": [
+
+        ]
+      },
+      {
+        "name": "putBoolean",
+        "parameterTypes": [
+          "long",
+          "boolean"
+        ]
+      },
+      {
+        "name": "putByte",
+        "parameterTypes": [
+          "long",
+          "byte"
+        ]
+      },
+      {
+        "name": "putByte",
+        "parameterTypes": [
+          "long",
+          "byte"
+        ]
+      },
+      {
+        "name": "putDouble",
+        "parameterTypes": [
+          "long",
+          "double"
+        ]
+      },
+      {
+        "name": "putFloat",
+        "parameterTypes": [
+          "long",
+          "float"
+        ]
+      },
+      {
+        "name": "putInt",
+        "parameterTypes": [
+          "long",
+          "int"
+        ]
+      },
+      {
+        "name": "putInt",
+        "parameterTypes": [
+          "long",
+          "int"
+        ]
+      },
+      {
+        "name": "putLong",
+        "parameterTypes": [
+          "long",
+          "long"
+        ]
+      },
+      {
+        "name": "putLong",
+        "parameterTypes": [
+          "long",
+          "long"
+        ]
+      },
+      {
+        "name": "putObject",
+        "parameterTypes": [
+          "long"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ucar.nc2.grib.collection.Grib2Iosp",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ucar.nc2.internal.iosp.hdf4.H4iosp",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ucar.nc2.internal.iosp.hdf5.H5iospNew",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ucar.nc2.iosp.hdf4.H4iosp",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ucar.nc2.stream.NcStreamIosp",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ucar.unidata.io.InMemoryRandomAccessFile$Provider",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ucar.unidata.io.http.HTTPRandomAccessFile$Provider",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+
+        ]
+      }
+    ]
+  }
+]
