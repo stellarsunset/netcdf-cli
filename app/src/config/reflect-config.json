@@ -63,6 +63,28 @@
                 ]
             },
             {
+                "name": "conciseFormat_SmokeTest",
+                "parameterTypes": [
+                    
+                ]
+            }
+        ],
+        "name": "com.stellarsunset.netcdf.cli.DimensionPrinterTest",
+        "queryAllDeclaredMethods": true,
+        "allDeclaredFields": true,
+        "queryAllPublicMethods": true
+    },
+    {
+        "allDeclaredClasses": true,
+        "queryAllDeclaredConstructors": true,
+        "methods": [
+            {
+                "name": "<init>",
+                "parameterTypes": [
+                    
+                ]
+            },
+            {
                 "name": "testRead",
                 "parameterTypes": [
                     
@@ -126,6 +148,34 @@
             }
         ],
         "name": "com.stellarsunset.netcdf.cli.Nc3Test",
+        "queryAllDeclaredMethods": true,
+        "allDeclaredFields": true,
+        "queryAllPublicMethods": true
+    },
+    {
+        "allDeclaredClasses": true,
+        "queryAllDeclaredConstructors": true,
+        "methods": [
+            {
+                "name": "<init>",
+                "parameterTypes": [
+                    
+                ]
+            },
+            {
+                "name": "conciseFormat_SmokeTest",
+                "parameterTypes": [
+                    
+                ]
+            },
+            {
+                "name": "verboseFormat_SmokeTest",
+                "parameterTypes": [
+                    
+                ]
+            }
+        ],
+        "name": "com.stellarsunset.netcdf.cli.VariablePrinterTest",
         "queryAllDeclaredMethods": true,
         "allDeclaredFields": true,
         "queryAllPublicMethods": true

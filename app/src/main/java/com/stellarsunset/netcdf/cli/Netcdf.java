@@ -27,14 +27,15 @@ class Netcdf implements Callable<Integer> {
             arity = "0..7",
             description = "show information about the specified dimensions in the file or all dimensions if none are provided"
     )
-    private String[] dimensions = new String[0];
+    private String[] dimensions;
 
     @Option(
             names = {"-v", "--variables"},
             arity = "0..7",
-            description = "show information about the specified variables in the file or all variables if none are provided"
+            description = "show information about the specified variables in the file or all variables if none are provided, " +
+                    "if specific dimensions were requested this is limited to only variables that vary over one of those dimensions"
     )
-    private String[] variables = new String[0];
+    private String[] variables;
 
     @Option(names = {"-l", "--long"}, description = "include the long format information about dimensions/variables")
     private boolean verbose = false;
@@ -63,6 +64,7 @@ class Netcdf implements Callable<Integer> {
                 if (code != 0) {
                     return code;
                 }
+                writer.write("\n");
             }
             if (variables != null) {
 
@@ -76,6 +78,7 @@ class Netcdf implements Callable<Integer> {
                 if (code != 0) {
                     return code;
                 }
+                writer.write("\n");
             }
         } catch (IOException e) {
             System.err.printf("Error occurred reading the provided Netcdf file: %s. Error was: %s.%n", file, e);

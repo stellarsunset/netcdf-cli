@@ -16,6 +16,7 @@ record DimensionPrinter(Formatter formatter, Set<String> dimensions) implements 
         Iterable<DimensionMatch> matches = () -> dimensionIterator(file, dimensions);
         try {
             writer.write(formatter.header());
+            writer.write("\n");
             for (DimensionMatch match : matches) {
                 writer.write(formatter.asText(match));
                 writer.write("\n");
@@ -65,9 +66,19 @@ record DimensionPrinter(Formatter formatter, Set<String> dimensions) implements 
 
         record Concise() implements Formatter {
 
+            private static final String ROW_PATTERN = "|%-30s|%-8s|";
+
+            private static final int VAR_MAX = 30;
+
+            private static final int LEN_MAX = 8;
+
             @Override
             public String header() {
-                return String.format("%30s%8s", "dimension", "length");
+                return String.join(
+                        "\n",
+                        String.format(ROW_PATTERN, "dimension", "length"),
+                        String.format(ROW_PATTERN, "-".repeat(VAR_MAX), "-".repeat(LEN_MAX))
+                );
             }
 
             @Override
@@ -75,12 +86,23 @@ record DimensionPrinter(Formatter formatter, Set<String> dimensions) implements 
                 return dimension.dimension().map(this::dimensionText).orElseGet(() -> missingText(dimension.dimensionName()));
             }
 
-            private String dimensionText(Dimension dimension) {
-                return String.format("%30s%8s", dimension.getName(), dimension.getLength());
+            String dimensionText(Dimension dimension) {
+                return String.format(ROW_PATTERN,
+                        truncateTo(dimension.getName(), VAR_MAX),
+                        dimension.getLength()
+                );
             }
 
-            private String missingText(String dimensionName) {
-                return String.format("%30s%8s?", dimensionName, "0");
+            String missingText(String dimensionName) {
+                return String.format(ROW_PATTERN,
+                        truncateTo(dimensionName, VAR_MAX - 1) + "?",
+                        "0"
+                );
+            }
+
+            String truncateTo(String text, int maxChars) {
+                int n = Math.min(text.length(), maxChars - 3);
+                return text.substring(0, n) + (n == text.length() ? "" : "...");
             }
         }
     }

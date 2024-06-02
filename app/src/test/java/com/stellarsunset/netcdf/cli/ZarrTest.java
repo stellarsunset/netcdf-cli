@@ -18,7 +18,7 @@ class ZarrTest {
 
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
 
-        int code = Netcdf.make(FILE, new String[]{}, new String[]{}, false)
+        int code = Netcdf.make(FILE, null, null, false)
                 .invoke(baos);
 
         assertAll(

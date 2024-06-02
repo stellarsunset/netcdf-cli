@@ -6,5 +6,8 @@ configure:
 make: configure
    ./gradlew nativeCompile
 
-run file:
-   ./app/build/native/nativeCompile/netcdf file -d -v
+dimensions file:
+   ./app/build/native/nativeCompile/netcdf {{file}} -d
+
+variables file:
+   ./app/build/native/nativeCompile/netcdf {{file}} -v

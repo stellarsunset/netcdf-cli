@@ -25,6 +25,8 @@ dependencies {
     implementation(libs.opendap)
     implementation(libs.zarr)
 
+    implementation(libs.jackson)
+
     implementation(libs.guava)
 
     testImplementation(libs.junit.jupiter)
