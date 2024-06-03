@@ -1,32 +1,21 @@
-package com.stellarsunset.netcdf.cli;
+package com.stellarsunset.netcdf.cli.describe;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.io.TempDir;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.nio.file.Path;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class Nc3Test {
+class Grib1Test {
 
-    private static File FILE;
-
-    @BeforeAll
-    static void setup(@TempDir Path temp) {
-        FILE = temp.resolve("data.nc").toFile();
-        new Nc3FileWriter().write(FILE);
-    }
+    private static final File FILE = new File(System.getProperty("user.dir") + "/src/test/resources/grib/data.grib1");
 
     @Test
     void testRead() {
 
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
-
-        int code = Netcdf.make(FILE, new String[]{"x", "y"}, new String[]{"xy"}, false)
-                .invoke(baos);
+        int code = Describe.make(FILE, true, true).invoke(baos);
 
         assertAll(
                 () -> assertEquals(0, code, "Should terminate with a successful exit code"),

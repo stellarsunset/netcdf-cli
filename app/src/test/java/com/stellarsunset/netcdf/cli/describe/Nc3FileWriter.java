@@ -1,4 +1,4 @@
-package com.stellarsunset.netcdf.cli;
+package com.stellarsunset.netcdf.cli.describe;
 
 import ucar.ma2.ArrayInt;
 import ucar.ma2.DataType;

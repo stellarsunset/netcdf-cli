@@ -2,68 +2,107 @@ package com.stellarsunset.netcdf.cli.json;
 
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.stellarsunset.netcdf.SchemaBinding;
+import com.stellarsunset.netcdf.cli.json.JsonBinding.AliasedVariable;
 import com.stellarsunset.netcdf.field.FieldSetter;
 import ucar.ma2.DataType;
 import ucar.nc2.NetcdfFile;
 import ucar.nc2.Variable;
 
-import java.util.Set;
+import java.io.BufferedWriter;
+import java.io.IOException;
 
 final class BindingMaker {
 
-    static SchemaBinding<JsonGenerator> createBindingFor(NetcdfFile file, Set<String> dimensionVariables, Set<String> coordinateVariables) {
+    private BindingMaker() {
+    }
+
+    /**
+     * Uses the target {@link NetcdfFile} to convert the incoming {@link JsonBinding} into a full {@link SchemaBinding}
+     */
+    static SchemaBinding<JsonGenerator> createBindingFor(NetcdfFile file, JsonBinding binding, BufferedWriter writer, JsonGenerator generator) {
 
         SchemaBinding.Builder<JsonGenerator> builder = SchemaBinding.builder();
 
+        for (AliasedVariable dimensionVariable : binding.dimensionVariables()) {
 
+            Variable variable = file.findVariable(dimensionVariable.variableName());
 
-        return builder.build();
+            if (variable != null) {
+                builder.dimensionVariable(
+                        variable.getDimension(0).getName(),
+                        variable.getFullName(),
+                        jsonSetter(dimensionVariable.alias(), variable.getDataType())
+                );
+            }
+        }
+
+        for (AliasedVariable coordinateVariable : binding.coordinateVariables()) {
+
+            Variable variable = file.findVariable(coordinateVariable.variableName());
+
+            if (variable != null) {
+                builder.coordinateVariable(
+                        variable.getFullName(),
+                        jsonSetter(coordinateVariable.alias(), variable.getDataType())
+                );
+            }
+        }
+
+        return builder
+                .recordInitializer(() -> {
+                    try {
+                        generator.writeStartObject();
+                        return generator;
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                })
+                .recordFinalizer(g -> {
+                    try {
+                        g.writeEndObject();
+                        writer.newLine();
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                })
+                .build();
     }
 
-    private FieldSetter<JsonGenerator> jsonSetter(String fieldName, DataType type) {
+    private static FieldSetter<JsonGenerator> jsonSetter(String fieldName, DataType type) {
         return switch (type) {
-            case DOUBLE -> FieldSetter.doubles((s, v) -> {
-                s.writeNumberField(fieldName, v);
+            case DOUBLE -> FieldSetter.doubles((s, d) -> {
+                s.writeNumberField(fieldName, d);
+                return s;
             });
-            case FLOAT -> shouldBe(variable, setter, FloatSetter.class);
-            case CHAR -> shouldBe(variable, setter, CharacterSetter.class);
-            case BOOLEAN -> shouldBe(variable, setter, BooleanSetter.class);
-            case ENUM4, UINT, INT -> shouldBe(variable, setter, IntSetter.class);
-            case ENUM2, USHORT, SHORT -> shouldBe(variable, setter, ShortSetter.class);
-            case ENUM1, UBYTE, BYTE -> shouldBe(variable, setter, ByteSetter.class);
-            case ULONG, LONG -> shouldBe(variable, setter, LongSetter.class);
-            case STRING, STRUCTURE, SEQUENCE, OPAQUE, OBJECT ->
-                    Optional.of(new Error.UnhandledVariableType(variable.getFullName(), variable.getDataType()));
-        };
-    }
-
-    private SchemaBinding.Builder<JsonGenerator> configureCoordinateVariable(SchemaBinding.Builder<JsonGenerator> builder, Variable variable) {
-        return switch (variable.getDataType()) {
-            case DOUBLE -> builder.doubleCoordinateVariable(variable.getFullName(), (g, s) -> );
-            case FLOAT -> shouldBe(variable, setter, FloatSetter.class);
-            case CHAR -> shouldBe(variable, setter, CharacterSetter.class);
-            case BOOLEAN -> shouldBe(variable, setter, BooleanSetter.class);
-            case ENUM4, UINT, INT -> shouldBe(variable, setter, IntSetter.class);
-            case ENUM2, USHORT, SHORT -> shouldBe(variable, setter, ShortSetter.class);
-            case ENUM1, UBYTE, BYTE -> shouldBe(variable, setter, ByteSetter.class);
-            case ULONG, LONG -> shouldBe(variable, setter, LongSetter.class);
-            case STRING, STRUCTURE, SEQUENCE, OPAQUE, OBJECT ->
-                    Optional.of(new Error.UnhandledVariableType(variable.getFullName(), variable.getDataType()));
-        };
-    }
-
-    private SchemaBinding.Builder<JsonGenerator> configureDimensionVariable(SchemaBinding.Builder<JsonGenerator> builder, Variable variable) {
-        return switch (variable.getDataType()) {
-            case DOUBLE -> ;
-            case FLOAT -> shouldBe(variable, setter, FloatSetter.class);
-            case CHAR -> shouldBe(variable, setter, CharacterSetter.class);
-            case BOOLEAN -> shouldBe(variable, setter, BooleanSetter.class);
-            case ENUM4, UINT, INT -> shouldBe(variable, setter, IntSetter.class);
-            case ENUM2, USHORT, SHORT -> shouldBe(variable, setter, ShortSetter.class);
-            case ENUM1, UBYTE, BYTE -> shouldBe(variable, setter, ByteSetter.class);
-            case ULONG, LONG -> shouldBe(variable, setter, LongSetter.class);
-            case STRING, STRUCTURE, SEQUENCE, OPAQUE, OBJECT ->
-                    Optional.of(new Error.UnhandledVariableType(variable.getFullName(), variable.getDataType()));
+            case FLOAT -> FieldSetter.floats((s, f) -> {
+                s.writeNumberField(fieldName, f);
+                return s;
+            });
+            case CHAR -> FieldSetter.characters((s, c) -> {
+                s.writeStringField(fieldName, Character.toString(c));
+                return s;
+            });
+            case BOOLEAN -> FieldSetter.booleans((s, b) -> {
+                s.writeBooleanField(fieldName, b);
+                return s;
+            });
+            case ENUM4, UINT, INT -> FieldSetter.ints((s, i) -> {
+                s.writeNumberField(fieldName, i);
+                return s;
+            });
+            case ENUM2, USHORT, SHORT -> FieldSetter.shorts((s, h) -> {
+                s.writeNumberField(fieldName, h);
+                return s;
+            });
+            case ENUM1, UBYTE, BYTE -> FieldSetter.bytes((s, b) -> {
+                s.writeBinaryField(fieldName, new byte[]{b});
+                return s;
+            });
+            case ULONG, LONG -> FieldSetter.longs((s, l) -> {
+                s.writeNumberField(fieldName, l);
+                return s;
+            });
+            case STRING, STRUCTURE, SEQUENCE, OPAQUE, OBJECT -> FieldSetter.noop();
         };
     }
 }

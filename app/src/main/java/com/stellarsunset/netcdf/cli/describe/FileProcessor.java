@@ -1,18 +1,17 @@
-package com.stellarsunset.netcdf.cli;
+package com.stellarsunset.netcdf.cli.describe;
 
 import ucar.nc2.NetcdfFile;
 
 import java.io.Writer;
-import java.util.Set;
 
 sealed interface FileProcessor permits DimensionPrinter, VariablePrinter {
 
-    static FileProcessor dimensionPrinter(DimensionPrinter.Formatter formatter, Set<String> dimensions) {
-        return new DimensionPrinter(formatter, dimensions);
+    static FileProcessor dimensionJsonWriter() {
+        return new DimensionPrinter();
     }
 
-    static FileProcessor variablePrinter(VariablePrinter.Formatter formatter, Set<String> dimensions, Set<String> variables) {
-        return new VariablePrinter(formatter, dimensions, variables);
+    static FileProcessor variableJsonWriter() {
+        return new VariablePrinter();
     }
 
     /**

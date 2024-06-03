@@ -47,7 +47,7 @@
                 ]
             }
         ],
-        "name": "com.stellarsunset.netcdf.cli.BufrTest",
+        "name": "com.stellarsunset.netcdf.cli.describe.BufrTest",
         "queryAllDeclaredMethods": true,
         "allDeclaredFields": true,
         "queryAllPublicMethods": true
@@ -63,35 +63,13 @@
                 ]
             },
             {
-                "name": "conciseFormat_SmokeTest",
+                "name": "smokeTest",
                 "parameterTypes": [
                     
                 ]
             }
         ],
-        "name": "com.stellarsunset.netcdf.cli.DimensionPrinterTest",
-        "queryAllDeclaredMethods": true,
-        "allDeclaredFields": true,
-        "queryAllPublicMethods": true
-    },
-    {
-        "allDeclaredClasses": true,
-        "queryAllDeclaredConstructors": true,
-        "methods": [
-            {
-                "name": "<init>",
-                "parameterTypes": [
-                    
-                ]
-            },
-            {
-                "name": "testRead",
-                "parameterTypes": [
-                    
-                ]
-            }
-        ],
-        "name": "com.stellarsunset.netcdf.cli.Grib1Test",
+        "name": "com.stellarsunset.netcdf.cli.describe.DimensionPrinterTest",
         "queryAllDeclaredMethods": true,
         "allDeclaredFields": true,
         "queryAllPublicMethods": true
@@ -113,13 +91,35 @@
                 ]
             }
         ],
-        "name": "com.stellarsunset.netcdf.cli.Grib2Test",
+        "name": "com.stellarsunset.netcdf.cli.describe.Grib1Test",
         "queryAllDeclaredMethods": true,
         "allDeclaredFields": true,
         "queryAllPublicMethods": true
     },
     {
-        "name": "com.stellarsunset.netcdf.cli.Nc3FileWriter",
+        "allDeclaredClasses": true,
+        "queryAllDeclaredConstructors": true,
+        "methods": [
+            {
+                "name": "<init>",
+                "parameterTypes": [
+                    
+                ]
+            },
+            {
+                "name": "testRead",
+                "parameterTypes": [
+                    
+                ]
+            }
+        ],
+        "name": "com.stellarsunset.netcdf.cli.describe.Grib2Test",
+        "queryAllDeclaredMethods": true,
+        "allDeclaredFields": true,
+        "queryAllPublicMethods": true
+    },
+    {
+        "name": "com.stellarsunset.netcdf.cli.describe.Nc3FileWriter",
         "allDeclaredClasses": true,
         "queryAllDeclaredMethods": true,
         "queryAllPublicMethods": true
@@ -147,7 +147,7 @@
                 ]
             }
         ],
-        "name": "com.stellarsunset.netcdf.cli.Nc3Test",
+        "name": "com.stellarsunset.netcdf.cli.describe.Nc3Test",
         "queryAllDeclaredMethods": true,
         "allDeclaredFields": true,
         "queryAllPublicMethods": true
@@ -163,19 +163,13 @@
                 ]
             },
             {
-                "name": "conciseFormat_SmokeTest",
-                "parameterTypes": [
-                    
-                ]
-            },
-            {
-                "name": "verboseFormat_SmokeTest",
+                "name": "smokeTest",
                 "parameterTypes": [
                     
                 ]
             }
         ],
-        "name": "com.stellarsunset.netcdf.cli.VariablePrinterTest",
+        "name": "com.stellarsunset.netcdf.cli.describe.VariablePrinterTest",
         "queryAllDeclaredMethods": true,
         "allDeclaredFields": true,
         "queryAllPublicMethods": true
@@ -197,7 +191,29 @@
                 ]
             }
         ],
-        "name": "com.stellarsunset.netcdf.cli.ZarrTest",
+        "name": "com.stellarsunset.netcdf.cli.describe.ZarrTest",
+        "queryAllDeclaredMethods": true,
+        "allDeclaredFields": true,
+        "queryAllPublicMethods": true
+    },
+    {
+        "allDeclaredClasses": true,
+        "queryAllDeclaredConstructors": true,
+        "methods": [
+            {
+                "name": "<init>",
+                "parameterTypes": [
+                    
+                ]
+            },
+            {
+                "name": "testParseBinding",
+                "parameterTypes": [
+                    
+                ]
+            }
+        ],
+        "name": "com.stellarsunset.netcdf.cli.json.JsonTest",
         "queryAllDeclaredMethods": true,
         "allDeclaredFields": true,
         "queryAllPublicMethods": true

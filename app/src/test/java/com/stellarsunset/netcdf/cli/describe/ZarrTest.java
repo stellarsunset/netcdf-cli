@@ -1,4 +1,4 @@
-package com.stellarsunset.netcdf.cli;
+package com.stellarsunset.netcdf.cli.describe;
 
 import org.junit.jupiter.api.Test;
 
@@ -17,9 +17,7 @@ class ZarrTest {
     void testRead() {
 
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
-
-        int code = Netcdf.make(FILE, null, null, false)
-                .invoke(baos);
+        int code = Describe.make(FILE, true, true).invoke(baos);
 
         assertAll(
                 () -> assertEquals(0, code, "Should terminate with a successful exit code"),

@@ -4,114 +4,32 @@
 package com.stellarsunset.netcdf.cli;
 
 
+import com.stellarsunset.netcdf.cli.describe.Describe;
 import com.stellarsunset.netcdf.cli.json.Json;
 import picocli.CommandLine;
 import picocli.CommandLine.Option;
-import picocli.CommandLine.Parameters;
-import ucar.nc2.NetcdfFile;
-import ucar.nc2.NetcdfFiles;
 
-import java.io.*;
-import java.util.Set;
 import java.util.concurrent.Callable;
-
-import static java.util.Objects.requireNonNull;
 
 class Netcdf implements Callable<Integer> {
 
-    @Parameters(index = "0", description = "the file to analyze")
-    private File file;
-
-    @Option(
-            names = {"-d", "--dimensions"},
-            arity = "0..7",
-            description = "show information about the specified dimensions in the file or all dimensions if none are provided"
-    )
-    private String[] dimensions;
-
-    @Option(
-            names = {"-v", "--variables"},
-            arity = "0..7",
-            description = "show information about the specified variables in the file or all variables if none are provided, " +
-                    "if specific dimensions were requested this is limited to only variables that vary over one of those dimensions"
-    )
-    private String[] variables;
-
-    @Option(names = {"-l", "--long"}, description = "include the long format information about dimensions/variables")
-    private boolean verbose = false;
+    @Option(names = {"-v", "--version"})
+    private boolean version = false;
 
     @Override
     public Integer call() {
-        return invoke(System.out);
-    }
-
-    int invoke(OutputStream outputStream) {
-        try (NetcdfFile netcdfFile = NetcdfFiles.open(file.getAbsolutePath());
-             Writer writer = new OutputStreamWriter(outputStream)) {
-
-            Set<String> dimensionsSet = dimensionsSet();
-
-            writer.write(String.format("File: %s\n", file));
-
-            if (dimensions != null) {
-
-                FileProcessor processor = FileProcessor.dimensionPrinter(
-                        DimensionPrinter.Formatter.concise(),
-                        dimensionsSet
-                );
-
-                int code = processor.process(netcdfFile, writer);
-                if (code != 0) {
-                    return code;
-                }
-                writer.write("\n");
-            }
-            if (variables != null) {
-
-                FileProcessor processor = FileProcessor.variablePrinter(
-                        verbose ? VariablePrinter.Formatter.verbose() : VariablePrinter.Formatter.concise(),
-                        dimensionsSet,
-                        variablesSet()
-                );
-
-                int code = processor.process(netcdfFile, writer);
-                if (code != 0) {
-                    return code;
-                }
-                writer.write("\n");
-            }
-        } catch (IOException e) {
-            System.err.printf("Error occurred reading the provided Netcdf file: %s. Error was: %s.%n", file, e);
-            return 1;
+        if (version) {
+            System.out.print("0.0.1");
         }
         return 0;
-    }
-
-    private Set<String> dimensionsSet() {
-        return dimensions == null ? Set.of() : Set.of(dimensions);
-    }
-
-    private Set<String> variablesSet() {
-        return variables == null ? Set.of() : Set.of(variables);
-    }
-
-    /**
-     * Useful for instantiating an instance of the command line runner for use in local unit tests.
-     */
-    static Netcdf make(File file, String[] dimensions, String[] variables, boolean verbose) {
-        Netcdf netcdf = new Netcdf();
-        netcdf.file = requireNonNull(file);
-        netcdf.dimensions = dimensions;
-        netcdf.variables = variables;
-        netcdf.verbose = verbose;
-        return netcdf;
     }
 
     public static void main(String[] args) {
 
         CommandLine commandLine = new CommandLine(new Netcdf())
                 .addSubcommand(new CommandLine.HelpCommand())
-                .addSubcommand(new Json());
+                .addSubcommand(new Json())
+                .addSubcommand(new Describe());
 
         System.exit(commandLine.execute(args));
     }

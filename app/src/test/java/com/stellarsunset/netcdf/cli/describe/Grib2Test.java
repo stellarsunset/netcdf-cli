@@ -1,4 +1,4 @@
-package com.stellarsunset.netcdf.cli;
+package com.stellarsunset.netcdf.cli.describe;
 
 import org.junit.jupiter.api.Test;
 
@@ -7,17 +7,15 @@ import java.io.File;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class Grib1Test {
+class Grib2Test {
 
-    private static final File FILE = new File(System.getProperty("user.dir") + "/src/test/resources/grib/data.grib1");
+    private static final File FILE = new File(System.getProperty("user.dir") + "/src/test/resources/grib/data.grib2");
 
     @Test
     void testRead() {
 
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
-
-        int code = Netcdf.make(FILE, new String[]{}, new String[]{}, false)
-                .invoke(baos);
+        int code = Describe.make(FILE, true, true).invoke(baos);
 
         assertAll(
                 () -> assertEquals(0, code, "Should terminate with a successful exit code"),
