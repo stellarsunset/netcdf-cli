@@ -1,8 +1,10 @@
 # Netcdf CLI
 
-Small collection of CLI tools based on [netcdf](https://github.com/stellarsunset/netcdf) for working with netcdf files.
+[![Test](https://github.com/stellarsunset/netcdf-cli/actions/workflows/test.yaml/badge.svg)](https://github.com/stellarsunset/netcdf-cli/actions/workflows/test.yaml)
 
-### TODO
-- `-d` export dimension variables as formatted `greppable` JSON
-- `-c` export coordinate variables as formatted `greppable` JSON
-- `json -d my-dimvar -c my-coordvar-1 my-coordvar-2`
+Minimal CLI tool for working with [netcdf](https://github.com/stellarsunset/netcdf) supported data files.
+
+### Build
+
+- Activate GraalVM with [SDKMAN](https://sdkman.io/) `sdk use java 21.0.2-graalce` before building
+- Run `just make` to build the `netcdf` binary and copy it into the root directory of the project

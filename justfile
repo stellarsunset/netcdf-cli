@@ -6,3 +6,4 @@ configure:
 # Re-build the executable binary
 make: configure
    ./gradlew nativeCompile
+   cp ./app/build/native/nativeCompile/netcdf ./

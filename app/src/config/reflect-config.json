@@ -137,7 +137,7 @@
             {
                 "name": "setup",
                 "parameterTypes": [
-                    
+                    "java.nio.file.Path"
                 ]
             },
             {
@@ -230,6 +230,91 @@
         ]
     },
     {
+        "name": "java.lang.Enum"
+    },
+    {
+        "name": "java.lang.Record",
+        "allDeclaredClasses": true,
+        "queryAllDeclaredMethods": true,
+        "queryAllPublicMethods": true
+    },
+    {
+        "name": "java.lang.Thread",
+        "fields": [
+            {
+                "name": "threadLocalRandomProbe"
+            }
+        ]
+    },
+    {
+        "name": "java.lang.invoke.MethodHandle"
+    },
+    {
+        "name": "java.nio.Buffer",
+        "fields": [
+            {
+                "name": "address"
+            }
+        ]
+    },
+    {
+        "name": "java.security.SecureRandomParameters"
+    },
+    {
+        "name": "java.util.HashSet"
+    },
+    {
+        "name": "java.util.LinkedHashSet"
+    },
+    {
+        "name": "java.util.concurrent.ArrayBlockingQueue"
+    },
+    {
+        "name": "java.util.concurrent.atomic.AtomicBoolean",
+        "fields": [
+            {
+                "name": "value"
+            }
+        ]
+    },
+    {
+        "name": "java.util.concurrent.atomic.AtomicReference",
+        "fields": [
+            {
+                "name": "value"
+            }
+        ]
+    },
+    {
+        "name": "java.util.concurrent.atomic.Striped64",
+        "fields": [
+            {
+                "name": "base"
+            },
+            {
+                "name": "cellsBusy"
+            }
+        ]
+    },
+    {
+        "name": "java.util.concurrent.locks.AbstractOwnableSynchronizer"
+    },
+    {
+        "name": "java.util.concurrent.locks.AbstractQueuedSynchronizer"
+    },
+    {
+        "name": "java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject"
+    },
+    {
+        "name": "java.util.concurrent.locks.ReentrantLock"
+    },
+    {
+        "name": "java.util.concurrent.locks.ReentrantLock$NonfairSync"
+    },
+    {
+        "name": "java.util.concurrent.locks.ReentrantLock$Sync"
+    },
+    {
         "name": "libcore.io.Memory"
     },
     {
@@ -242,13 +327,13 @@
             {
                 "name": "arrayBaseOffset",
                 "parameterTypes": [
-                    
+                    "java.lang.Class"
                 ]
             },
             {
                 "name": "arrayIndexScale",
                 "parameterTypes": [
-                    
+                    "java.lang.Class"
                 ]
             },
             {
@@ -262,7 +347,9 @@
             {
                 "name": "copyMemory",
                 "parameterTypes": [
+                    "java.lang.Object",
                     "long",
+                    "java.lang.Object",
                     "long",
                     "long"
                 ]
@@ -270,6 +357,7 @@
             {
                 "name": "getBoolean",
                 "parameterTypes": [
+                    "java.lang.Object",
                     "long"
                 ]
             },
@@ -282,18 +370,21 @@
             {
                 "name": "getByte",
                 "parameterTypes": [
+                    "java.lang.Object",
                     "long"
                 ]
             },
             {
                 "name": "getDouble",
                 "parameterTypes": [
+                    "java.lang.Object",
                     "long"
                 ]
             },
             {
                 "name": "getFloat",
                 "parameterTypes": [
+                    "java.lang.Object",
                     "long"
                 ]
             },
@@ -306,6 +397,7 @@
             {
                 "name": "getInt",
                 "parameterTypes": [
+                    "java.lang.Object",
                     "long"
                 ]
             },
@@ -318,24 +410,27 @@
             {
                 "name": "getLong",
                 "parameterTypes": [
+                    "java.lang.Object",
                     "long"
                 ]
             },
             {
                 "name": "getObject",
                 "parameterTypes": [
+                    "java.lang.Object",
                     "long"
                 ]
             },
             {
                 "name": "objectFieldOffset",
                 "parameterTypes": [
-                    
+                    "java.lang.reflect.Field"
                 ]
             },
             {
                 "name": "putBoolean",
                 "parameterTypes": [
+                    "java.lang.Object",
                     "long",
                     "boolean"
                 ]
@@ -350,6 +445,7 @@
             {
                 "name": "putByte",
                 "parameterTypes": [
+                    "java.lang.Object",
                     "long",
                     "byte"
                 ]
@@ -357,6 +453,7 @@
             {
                 "name": "putDouble",
                 "parameterTypes": [
+                    "java.lang.Object",
                     "long",
                     "double"
                 ]
@@ -364,6 +461,7 @@
             {
                 "name": "putFloat",
                 "parameterTypes": [
+                    "java.lang.Object",
                     "long",
                     "float"
                 ]
@@ -378,6 +476,7 @@
             {
                 "name": "putInt",
                 "parameterTypes": [
+                    "java.lang.Object",
                     "long",
                     "int"
                 ]
@@ -392,6 +491,7 @@
             {
                 "name": "putLong",
                 "parameterTypes": [
+                    "java.lang.Object",
                     "long",
                     "long"
                 ]
@@ -399,7 +499,9 @@
             {
                 "name": "putObject",
                 "parameterTypes": [
-                    "long"
+                    "java.lang.Object",
+                    "long",
+                    "java.lang.Object"
                 ]
             }
         ]
@@ -416,7 +518,7 @@
             {
                 "name": "<init>",
                 "parameterTypes": [
-                    
+                    "java.security.SecureRandomParameters"
                 ]
             }
         ]

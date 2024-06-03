@@ -143,3 +143,8 @@ gradle-app.setting
 *.hprof
 
 # End of https://www.toptal.com/developers/gitignore/api/intellij+all,java,gradle
+
+# Netcdf binary generation
+netcdf
+app/src/test/resources/grib/*.gbx9
+app/src/test/resources/grib/*.ncx4

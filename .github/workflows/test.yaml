@@ -6,7 +6,7 @@ on:
     branches: [ "main" ]
 
 jobs:
-  test-java:
+  test:
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -35,23 +35,3 @@ jobs:
         uses: codecov/codecov-action@v4.0.1
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
-
-  test-native:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      checks: write
-
-    steps:
-      - uses: actions/checkout@v4
-      - uses: graalvm/setup-graalvm@v1
-        with:
-          java-version: '21'
-          distribution: 'graalvm'
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Setup Gradle
-        uses: gradle/actions/setup-gradle@417ae3ccd767c252f5661f1ace9f835f9654f2b5 # v3.1.0
-
-      - name: Build with Gradle Native
-        run: gradle nativeTest
