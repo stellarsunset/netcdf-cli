@@ -1,4 +1,4 @@
-package com.stellarsunset.netcdf.cli.describe;
+package com.stellarsunset.netcdf.cli;
 
 import org.junit.jupiter.api.Test;
 
@@ -15,7 +15,7 @@ class BufrTest {
     void testRead() {
 
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        int code = Describe.make(FILE, true, true).invoke(baos);
+        int code = Describe.all(FILE).invoke(baos);
 
         assertAll(
                 () -> assertEquals(0, code, "Should terminate with a successful exit code"),

@@ -10,9 +10,9 @@ import picocli.CommandLine.Parameters;
 import ucar.nc2.NetcdfFile;
 import ucar.nc2.NetcdfFiles;
 
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.OutputStreamWriter;
+import java.io.Writer;
 import java.util.concurrent.Callable;
 
 @Command(
@@ -44,13 +44,11 @@ public final class Json implements Callable<Integer> {
     @Override
     public Integer call() throws Exception {
         try (NetcdfFile netcdfFile = NetcdfFiles.open(file.getAbsolutePath());
-             BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(System.out));
-             JsonGenerator generator = FACTORY.createGenerator(writer)) {
+             JsonGenerator generator = FACTORY.createGenerator(System.out)) {
 
             SchemaBinding<JsonGenerator> binding = BindingMaker.createBindingFor(
                     netcdfFile,
                     parseBinding(dimensionVariables, coordinateVariables),
-                    writer,
                     generator
             );
 

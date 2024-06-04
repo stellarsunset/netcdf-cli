@@ -8,7 +8,6 @@ import ucar.ma2.DataType;
 import ucar.nc2.NetcdfFile;
 import ucar.nc2.Variable;
 
-import java.io.BufferedWriter;
 import java.io.IOException;
 
 final class BindingMaker {
@@ -17,9 +16,9 @@ final class BindingMaker {
     }
 
     /**
-     * Uses the target {@link NetcdfFile} to convert the incoming {@link JsonBinding} into a full {@link SchemaBinding}
+     * Uses the target {@link NetcdfFile} to convert the incoming {@link JsonBinding} into a full {@link SchemaBinding}.
      */
-    static SchemaBinding<JsonGenerator> createBindingFor(NetcdfFile file, JsonBinding binding, BufferedWriter writer, JsonGenerator generator) {
+    static SchemaBinding<JsonGenerator> createBindingFor(NetcdfFile file, JsonBinding binding, JsonGenerator generator) {
 
         SchemaBinding.Builder<JsonGenerator> builder = SchemaBinding.builder();
 
@@ -60,7 +59,7 @@ final class BindingMaker {
                 .recordFinalizer(g -> {
                     try {
                         g.writeEndObject();
-                        writer.newLine();
+                        g.writeRaw(System.lineSeparator());
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }

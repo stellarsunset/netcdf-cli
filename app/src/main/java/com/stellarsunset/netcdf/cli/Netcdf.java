@@ -4,14 +4,13 @@
 package com.stellarsunset.netcdf.cli;
 
 
-import com.stellarsunset.netcdf.cli.describe.Describe;
 import com.stellarsunset.netcdf.cli.json.Json;
 import picocli.CommandLine;
 import picocli.CommandLine.Option;
 
 import java.util.concurrent.Callable;
 
-class Netcdf implements Callable<Integer> {
+final class Netcdf implements Callable<Integer> {
 
     @Option(names = {"-v", "--version"})
     private boolean version = false;

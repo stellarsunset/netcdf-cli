@@ -1,30 +1,23 @@
-package com.stellarsunset.netcdf.cli.describe;
+package com.stellarsunset.netcdf.cli;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.io.TempDir;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.nio.file.Path;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class Nc3Test {
+class ZarrTest {
 
-    private static File FILE;
-
-    @BeforeAll
-    static void setup(@TempDir Path temp) {
-        FILE = temp.resolve("data.nc").toFile();
-        new Nc3FileWriter().write(FILE);
-    }
+    // In ZARR the data is stored in a folder structure, this allows cloud-hosted services to only load the indexes and
+    // variables they need from a cloud data hosting service like S3 as the logical file is split across multiple objects
+    private static final File FILE = new File(System.getProperty("user.dir") + "/src/test/resources/zarr/data");
 
     @Test
     void testRead() {
 
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        int code = Describe.make(FILE, true, true).invoke(baos);
+        int code = Describe.all(FILE).invoke(baos);
 
         assertAll(
                 () -> assertEquals(0, code, "Should terminate with a successful exit code"),

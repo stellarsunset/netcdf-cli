@@ -7,4 +7,4 @@ Minimal CLI tool for working with [netcdf](https://github.com/stellarsunset/netc
 ### Build
 
 - Activate GraalVM with [SDKMAN](https://sdkman.io/) `sdk use java 21.0.2-graalce` before building
-- Run `just make` to build the `netcdf` binary and copy it into the root directory of the project
+- Run `just make` to build the `netcdf` binary and copy it into the `./bin` directory of the project
