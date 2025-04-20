@@ -47,7 +47,7 @@ graalvmNative {
             imageName = "netcdf"
 
             javaLauncher = javaToolchains.launcherFor {
-                languageVersion = JavaLanguageVersion.of(21)
+                languageVersion = JavaLanguageVersion.of(23)
             }
 
             resources.autodetect()

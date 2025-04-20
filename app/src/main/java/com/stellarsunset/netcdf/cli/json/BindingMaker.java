@@ -1,14 +1,11 @@
 package com.stellarsunset.netcdf.cli.json;
 
-import com.fasterxml.jackson.core.JsonGenerator;
-import com.stellarsunset.netcdf.SchemaBinding;
 import com.stellarsunset.netcdf.cli.json.JsonBinding.AliasedVariable;
-import com.stellarsunset.netcdf.field.FieldSetter;
+import io.github.stellarsunset.netcdf.FieldBinding;
+import io.github.stellarsunset.netcdf.SchemaBinding;
 import ucar.ma2.DataType;
 import ucar.nc2.NetcdfFile;
 import ucar.nc2.Variable;
-
-import java.io.IOException;
 
 final class BindingMaker {
 
@@ -18,9 +15,9 @@ final class BindingMaker {
     /**
      * Uses the target {@link NetcdfFile} to convert the incoming {@link JsonBinding} into a full {@link SchemaBinding}.
      */
-    static SchemaBinding<JsonGenerator> createBindingFor(NetcdfFile file, JsonBinding binding, JsonGenerator generator) {
+    static SchemaBinding<SafeGenerator> createBindingFor(NetcdfFile file, JsonBinding binding, SafeGenerator generator) {
 
-        SchemaBinding.Builder<JsonGenerator> builder = SchemaBinding.builder();
+        SchemaBinding.Builder<SafeGenerator> builder = SchemaBinding.builder();
 
         for (AliasedVariable dimensionVariable : binding.dimensionVariables()) {
 
@@ -48,60 +45,58 @@ final class BindingMaker {
         }
 
         return builder
-                .recordInitializer(() -> {
-                    try {
-                        generator.writeStartObject();
-                        return generator;
-                    } catch (IOException e) {
-                        throw new RuntimeException(e);
-                    }
-                })
-                .recordFinalizer(g -> {
-                    try {
-                        g.writeEndObject();
-                        g.writeRaw(System.lineSeparator());
-                    } catch (IOException e) {
-                        throw new RuntimeException(e);
-                    }
-                })
+                .recordInitializer(generator::writeStartObject)
+                .recordFinalizer(g -> g.writeEndObject().writeRaw(System.lineSeparator()))
                 .build();
     }
 
-    private static FieldSetter<JsonGenerator> jsonSetter(String fieldName, DataType type) {
+    private static FieldBinding<SafeGenerator> jsonSetter(String fieldName, DataType type) {
         return switch (type) {
-            case DOUBLE -> FieldSetter.doubles((s, d) -> {
-                s.writeNumberField(fieldName, d);
-                return s;
-            });
-            case FLOAT -> FieldSetter.floats((s, f) -> {
-                s.writeNumberField(fieldName, f);
-                return s;
-            });
-            case CHAR -> FieldSetter.characters((s, c) -> {
-                s.writeStringField(fieldName, Character.toString(c));
-                return s;
-            });
-            case BOOLEAN -> FieldSetter.booleans((s, b) -> {
-                s.writeBooleanField(fieldName, b);
-                return s;
-            });
-            case ENUM4, UINT, INT -> FieldSetter.ints((s, i) -> {
-                s.writeNumberField(fieldName, i);
-                return s;
-            });
-            case ENUM2, USHORT, SHORT -> FieldSetter.shorts((s, h) -> {
-                s.writeNumberField(fieldName, h);
-                return s;
-            });
-            case ENUM1, UBYTE, BYTE -> FieldSetter.bytes((s, b) -> {
-                s.writeBinaryField(fieldName, new byte[]{b});
-                return s;
-            });
-            case ULONG, LONG -> FieldSetter.longs((s, l) -> {
-                s.writeNumberField(fieldName, l);
-                return s;
-            });
-            case STRING, STRUCTURE, SEQUENCE, OPAQUE, OBJECT -> FieldSetter.noop();
+            case DOUBLE -> doubles((s, d) -> s.writeDouble(fieldName, d));
+            case FLOAT -> floats((s, f) -> s.writeFloat(fieldName, f));
+            case CHAR -> chars((s, c) -> s.writeChar(fieldName, c));
+            case BOOLEAN -> bools((s, b) -> s.writeBool(fieldName, b));
+            case UINT -> ints((s, b) -> s.writeLong(fieldName, Integer.toUnsignedLong(b))); // no unsigned types
+            case ENUM4, INT -> ints((s, b) -> s.writeInt(fieldName, b));
+            case USHORT -> shorts((s, b) -> s.writeInt(fieldName, Short.toUnsignedInt(b))); // no unsigned
+            case ENUM2, SHORT -> shorts((s, b) -> s.writeShort(fieldName, b));
+            case UBYTE -> bytes((s, b) -> s.writeInt(fieldName, Short.toUnsignedInt(b)));
+            case ENUM1, BYTE -> bytes((s, b) -> s.writeShort(fieldName, (short) b)); // no byte type - upcast to short
+            case LONG -> longs((s, l) -> s.writeLong(fieldName, l));
+            case ULONG, STRING, STRUCTURE, SEQUENCE, OPAQUE, OBJECT ->
+                    throw new IllegalArgumentException(String.format("Unhandled Json binding for NetCDF primitive type: %s", type));
         };
+    }
+
+    private static <T> FieldBinding<T> doubles(FieldBinding.Double<T> doubles) {
+        return doubles;
+    }
+
+    private static <T> FieldBinding<T> floats(FieldBinding.Float<T> floats) {
+        return floats;
+    }
+
+    private static <T> FieldBinding<T> chars(FieldBinding.Char<T> chars) {
+        return chars;
+    }
+
+    private static <T> FieldBinding<T> bools(FieldBinding.Bool<T> bools) {
+        return bools;
+    }
+
+    private static <T> FieldBinding<T> ints(FieldBinding.Int<T> ints) {
+        return ints;
+    }
+
+    private static <T> FieldBinding<T> shorts(FieldBinding.Short<T> shorts) {
+        return shorts;
+    }
+
+    private static <T> FieldBinding<T> bytes(FieldBinding.Byte<T> bytes) {
+        return bytes;
+    }
+
+    private static <T> FieldBinding<T> longs(FieldBinding.Long<T> longs) {
+        return longs;
     }
 }

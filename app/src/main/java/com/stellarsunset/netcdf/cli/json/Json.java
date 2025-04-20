@@ -2,8 +2,8 @@ package com.stellarsunset.netcdf.cli.json;
 
 import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonGenerator;
-import com.stellarsunset.netcdf.NetcdfRecordReader;
-import com.stellarsunset.netcdf.SchemaBinding;
+import io.github.stellarsunset.netcdf.NetcdfRecordReader;
+import io.github.stellarsunset.netcdf.SchemaBinding;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
 import picocli.CommandLine.Parameters;
@@ -11,8 +11,6 @@ import ucar.nc2.NetcdfFile;
 import ucar.nc2.NetcdfFiles;
 
 import java.io.File;
-import java.io.OutputStreamWriter;
-import java.io.Writer;
 import java.util.concurrent.Callable;
 
 @Command(
@@ -44,9 +42,9 @@ public final class Json implements Callable<Integer> {
     @Override
     public Integer call() throws Exception {
         try (NetcdfFile netcdfFile = NetcdfFiles.open(file.getAbsolutePath());
-             JsonGenerator generator = FACTORY.createGenerator(System.out)) {
+             SafeGenerator generator = new SafeGenerator(FACTORY.createGenerator(System.out))) {
 
-            SchemaBinding<JsonGenerator> binding = BindingMaker.createBindingFor(
+            SchemaBinding<SafeGenerator> binding = BindingMaker.createBindingFor(
                     netcdfFile,
                     parseBinding(dimensionVariables, coordinateVariables),
                     generator
