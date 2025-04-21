@@ -3,7 +3,7 @@ set positional-arguments
 default:
    just --list
 
-# generate graal resource/reflection configs from unit test coverage
+# generate graal resource/reflection configs from unit tests, these require some additional configuration
 @configure:
    ./gradlew -Pagent test
    cp -r ./app/build/native/agent-output/run/{reflect-config.json,resource-config.json} ./app/src/config
@@ -13,7 +13,7 @@ default:
   ./gradlew test
 
 # build the binary
-@binary: configure
+@binary:
    ./gradlew nativeCompile
 
 # invoke the cli binary with the provided arguments (assuming its been built)

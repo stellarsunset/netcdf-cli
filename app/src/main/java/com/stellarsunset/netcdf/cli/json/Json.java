@@ -15,7 +15,12 @@ import java.util.concurrent.Callable;
 
 @Command(
         name = "json",
-        description = "Convert a Netcdf file to a stream of JSON records."
+        description = """
+                Convert a Netcdf file to a stream of JSON records.
+                
+                Extract records with subsets of the record's fields including dimension and coordinate variables as seen
+                in via 'netcdf describe'.
+                """
 )
 public final class Json implements Callable<Integer> {
 
