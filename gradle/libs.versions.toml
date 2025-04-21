@@ -9,7 +9,7 @@ junit-jupiter = "5.10.1"
 picocli = { module = "info.picocli:picocli", version.ref = "picocli" }
 picocli-gen = { module = "info.picocli:picocli-codegen", version.ref = "picocli" }
 
-netcdf = { module = "io.github.stellarsunset:netcdf", version = "0.0.3" }
+netcdf = { module = "io.github.stellarsunset:netcdf", version = "1.0.0" }
 # Runtime dependencies supporting specific file formats
 bufr = { module = "edu.ucar:bufr", version.ref = "netcdf" }
 grib = { module = "edu.ucar:grib", version.ref = "netcdf" }

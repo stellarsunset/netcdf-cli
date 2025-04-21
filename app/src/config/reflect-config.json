@@ -1,23 +1,9 @@
 [
     {
-        "name": "[Ljava.lang.Object;"
-    },
-    {
-        "name": "[Ljava.util.HashMap;"
+        "name": "[Ljava.lang.String;"
     },
     {
         "name": "[Lorg.jdom2.Content;"
-    },
-    {
-        "name": "com.fasterxml.jackson.databind.ext.Java7SupportImpl",
-        "methods": [
-            {
-                "name": "<init>",
-                "parameterTypes": [
-                    
-                ]
-            }
-        ]
     },
     {
         "name": "com.google.protobuf.ExtensionRegistry",
@@ -31,150 +17,6 @@
         ]
     },
     {
-        "allDeclaredClasses": true,
-        "queryAllDeclaredConstructors": true,
-        "methods": [
-            {
-                "name": "<init>",
-                "parameterTypes": [
-                    
-                ]
-            },
-            {
-                "name": "testRead",
-                "parameterTypes": [
-                    
-                ]
-            }
-        ],
-        "name": "com.stellarsunset.netcdf.cli.BufrTest",
-        "queryAllDeclaredMethods": true,
-        "allDeclaredFields": true,
-        "queryAllPublicMethods": true
-    },
-    {
-        "allDeclaredClasses": true,
-        "queryAllDeclaredConstructors": true,
-        "methods": [
-            {
-                "name": "<init>",
-                "parameterTypes": [
-                    
-                ]
-            },
-            {
-                "name": "testRead",
-                "parameterTypes": [
-                    
-                ]
-            }
-        ],
-        "name": "com.stellarsunset.netcdf.cli.Grib1Test",
-        "queryAllDeclaredMethods": true,
-        "allDeclaredFields": true,
-        "queryAllPublicMethods": true
-    },
-    {
-        "allDeclaredClasses": true,
-        "queryAllDeclaredConstructors": true,
-        "methods": [
-            {
-                "name": "<init>",
-                "parameterTypes": [
-                    
-                ]
-            },
-            {
-                "name": "testRead",
-                "parameterTypes": [
-                    
-                ]
-            }
-        ],
-        "name": "com.stellarsunset.netcdf.cli.Grib2Test",
-        "queryAllDeclaredMethods": true,
-        "allDeclaredFields": true,
-        "queryAllPublicMethods": true
-    },
-    {
-        "name": "com.stellarsunset.netcdf.cli.Nc3FileWriter",
-        "allDeclaredClasses": true,
-        "queryAllDeclaredMethods": true,
-        "queryAllPublicMethods": true
-    },
-    {
-        "allDeclaredClasses": true,
-        "queryAllDeclaredConstructors": true,
-        "methods": [
-            {
-                "name": "<init>",
-                "parameterTypes": [
-                    
-                ]
-            },
-            {
-                "name": "setup",
-                "parameterTypes": [
-                    "java.nio.file.Path"
-                ]
-            },
-            {
-                "name": "testRead",
-                "parameterTypes": [
-                    
-                ]
-            }
-        ],
-        "name": "com.stellarsunset.netcdf.cli.Nc3Test",
-        "queryAllDeclaredMethods": true,
-        "allDeclaredFields": true,
-        "queryAllPublicMethods": true
-    },
-    {
-        "allDeclaredClasses": true,
-        "queryAllDeclaredConstructors": true,
-        "methods": [
-            {
-                "name": "<init>",
-                "parameterTypes": [
-                    
-                ]
-            },
-            {
-                "name": "testRead",
-                "parameterTypes": [
-                    
-                ]
-            }
-        ],
-        "name": "com.stellarsunset.netcdf.cli.ZarrTest",
-        "queryAllDeclaredMethods": true,
-        "allDeclaredFields": true,
-        "queryAllPublicMethods": true
-    },
-    {
-        "allDeclaredClasses": true,
-        "queryAllDeclaredConstructors": true,
-        "methods": [
-            {
-                "name": "<init>",
-                "parameterTypes": [
-                    
-                ]
-            },
-            {
-                "name": "testParseBinding",
-                "parameterTypes": [
-                    
-                ]
-            }
-        ],
-        "name": "com.stellarsunset.netcdf.cli.json.JsonTest",
-        "queryAllDeclaredMethods": true,
-        "allDeclaredFields": true,
-        "queryAllPublicMethods": true
-    },
-    {
         "name": "com.sun.org.apache.xerces.internal.jaxp.SAXParserFactoryImpl",
         "methods": [
             {
@@ -186,95 +28,33 @@
         ]
     },
     {
-        "name": "java.lang.Enum"
-    },
-    {
-        "name": "java.lang.Record",
-        "allDeclaredClasses": true,
-        "queryAllDeclaredMethods": true,
-        "queryAllPublicMethods": true
-    },
-    {
-        "name": "java.lang.Thread",
-        "fields": [
-            {
-                "name": "threadLocalRandomProbe"
-            }
-        ]
-    },
-    {
-        "name": "java.lang.invoke.MethodHandle"
-    },
-    {
-        "name": "java.nio.Buffer",
-        "fields": [
-            {
-                "name": "address"
-            }
-        ]
-    },
-    {
-        "name": "java.security.SecureRandomParameters"
-    },
-    {
-        "name": "java.util.HashSet"
-    },
-    {
-        "name": "java.util.LinkedHashSet"
-    },
-    {
-        "name": "java.util.concurrent.ArrayBlockingQueue"
-    },
-    {
-        "name": "java.util.concurrent.atomic.AtomicBoolean",
-        "fields": [
-            {
-                "name": "value"
-            }
-        ]
-    },
-    {
-        "name": "java.util.concurrent.atomic.AtomicReference",
-        "fields": [
-            {
-                "name": "value"
-            }
-        ]
-    },
-    {
-        "name": "java.util.concurrent.atomic.Striped64",
-        "fields": [
-            {
-                "name": "base"
-            },
-            {
-                "name": "cellsBusy"
-            }
-        ]
-    },
-    {
-        "name": "java.util.concurrent.locks.AbstractOwnableSynchronizer"
-    },
-    {
-        "name": "java.util.concurrent.locks.AbstractQueuedSynchronizer"
-    },
-    {
-        "name": "java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject"
-    },
-    {
-        "name": "java.util.concurrent.locks.ReentrantLock"
-    },
-    {
-        "name": "java.util.concurrent.locks.ReentrantLock$NonfairSync"
-    },
-    {
-        "name": "java.util.concurrent.locks.ReentrantLock$Sync"
+        "name": "groovy.lang.Closure"
     },
     {
         "name": "libcore.io.Memory"
     },
     {
+        "name": "org.example.Netcdf",
+        "queryAllDeclaredMethods": true,
+        "allDeclaredFields": true
+    },
+    {
+        "name": "org.example.info.Info",
+        "queryAllDeclaredMethods": true,
+        "allDeclaredFields": true
+    },
+    {
+        "name": "org.example.json.Json",
+        "queryAllDeclaredMethods": true,
+        "allDeclaredFields": true
+    },
+    {
         "name": "org.robolectric.Robolectric"
+    },
+    {
+        "name": "picocli.CommandLine$HelpCommand",
+        "queryAllDeclaredMethods": true,
+        "allDeclaredFields": true
     },
     {
         "name": "sun.misc.Unsafe",
@@ -283,13 +63,13 @@
             {
                 "name": "arrayBaseOffset",
                 "parameterTypes": [
-                    "java.lang.Class"
+                    
                 ]
             },
             {
                 "name": "arrayIndexScale",
                 "parameterTypes": [
-                    "java.lang.Class"
+                    
                 ]
             },
             {
@@ -303,9 +83,7 @@
             {
                 "name": "copyMemory",
                 "parameterTypes": [
-                    "java.lang.Object",
                     "long",
-                    "java.lang.Object",
                     "long",
                     "long"
                 ]
@@ -313,7 +91,6 @@
             {
                 "name": "getBoolean",
                 "parameterTypes": [
-                    "java.lang.Object",
                     "long"
                 ]
             },
@@ -326,21 +103,18 @@
             {
                 "name": "getByte",
                 "parameterTypes": [
-                    "java.lang.Object",
                     "long"
                 ]
             },
             {
                 "name": "getDouble",
                 "parameterTypes": [
-                    "java.lang.Object",
                     "long"
                 ]
             },
             {
                 "name": "getFloat",
                 "parameterTypes": [
-                    "java.lang.Object",
                     "long"
                 ]
             },
@@ -353,7 +127,6 @@
             {
                 "name": "getInt",
                 "parameterTypes": [
-                    "java.lang.Object",
                     "long"
                 ]
             },
@@ -366,27 +139,24 @@
             {
                 "name": "getLong",
                 "parameterTypes": [
-                    "java.lang.Object",
                     "long"
                 ]
             },
             {
                 "name": "getObject",
                 "parameterTypes": [
-                    "java.lang.Object",
                     "long"
                 ]
             },
             {
                 "name": "objectFieldOffset",
                 "parameterTypes": [
-                    "java.lang.reflect.Field"
+                    
                 ]
             },
             {
                 "name": "putBoolean",
                 "parameterTypes": [
-                    "java.lang.Object",
                     "long",
                     "boolean"
                 ]
@@ -401,7 +171,6 @@
             {
                 "name": "putByte",
                 "parameterTypes": [
-                    "java.lang.Object",
                     "long",
                     "byte"
                 ]
@@ -409,7 +178,6 @@
             {
                 "name": "putDouble",
                 "parameterTypes": [
-                    "java.lang.Object",
                     "long",
                     "double"
                 ]
@@ -417,7 +185,6 @@
             {
                 "name": "putFloat",
                 "parameterTypes": [
-                    "java.lang.Object",
                     "long",
                     "float"
                 ]
@@ -432,7 +199,6 @@
             {
                 "name": "putInt",
                 "parameterTypes": [
-                    "java.lang.Object",
                     "long",
                     "int"
                 ]
@@ -447,7 +213,6 @@
             {
                 "name": "putLong",
                 "parameterTypes": [
-                    "java.lang.Object",
                     "long",
                     "long"
                 ]
@@ -455,48 +220,7 @@
             {
                 "name": "putObject",
                 "parameterTypes": [
-                    "java.lang.Object",
-                    "long",
-                    "java.lang.Object"
-                ]
-            }
-        ]
-    },
-    {
-        "name": "sun.security.provider.NativePRNG",
-        "methods": [
-            {
-                "name": "<init>",
-                "parameterTypes": [
-                    
-                ]
-            },
-            {
-                "name": "<init>",
-                "parameterTypes": [
-                    "java.security.SecureRandomParameters"
-                ]
-            }
-        ]
-    },
-    {
-        "name": "sun.security.provider.SHA",
-        "methods": [
-            {
-                "name": "<init>",
-                "parameterTypes": [
-                    
-                ]
-            }
-        ]
-    },
-    {
-        "name": "ucar.nc2.grib.collection.Grib1Iosp",
-        "methods": [
-            {
-                "name": "<init>",
-                "parameterTypes": [
-                    
+                    "long"
                 ]
             }
         ]
@@ -535,40 +259,7 @@
         ]
     },
     {
-        "name": "ucar.nc2.iosp.bufr.BufrIosp2",
-        "methods": [
-            {
-                "name": "<init>",
-                "parameterTypes": [
-                    
-                ]
-            }
-        ]
-    },
-    {
         "name": "ucar.nc2.iosp.hdf4.H4iosp",
-        "methods": [
-            {
-                "name": "<init>",
-                "parameterTypes": [
-                    
-                ]
-            }
-        ]
-    },
-    {
-        "name": "ucar.nc2.iosp.zarr.ZArray$ZArrayDeserializer",
-        "methods": [
-            {
-                "name": "<init>",
-                "parameterTypes": [
-                    
-                ]
-            }
-        ]
-    },
-    {
-        "name": "ucar.nc2.iosp.zarr.ZarrIosp",
         "methods": [
             {
                 "name": "<init>",

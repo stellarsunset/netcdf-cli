@@ -1,10 +1,21 @@
-# Re-generate the resource/reflection configs based on the unit tests
-configure:
-   ./gradlew -Pagent test
-   cp -r ./app/build/native/agent-output/test/{reflect-config.json,resource-config.json} ./app/src/config
+set positional-arguments
 
-# Re-build the executable binary
-make: configure
+default:
+   just --list
+
+# generate graal resource/reflection configs from unit tests, these require some additional configuration
+@configure:
+   ./gradlew -Pagent test
+   cp -r ./app/build/native/agent-output/run/{reflect-config.json,resource-config.json} ./app/src/config
+
+# run the unit tests of the project
+@test:
+  ./gradlew test
+
+# build the binary
+@binary:
    ./gradlew nativeCompile
-   mkdir -p ./bin
-   cp -rf ./app/build/native/nativeCompile/netcdf ./bin/
+
+# invoke the cli binary with the provided arguments (assuming its been built)
+@cli *args='':
+  ./app/build/native/nativeCompile/netcdf $@
